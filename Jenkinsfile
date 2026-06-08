@@ -15,6 +15,13 @@ pipeline {
                 sh 'docker push ishu1225/nginx-app:v1'
             }
         }
+        stage('Kubernetes Debug') {
+    steps {
+        sh 'kubectl config current-context'
+        sh 'kubectl config get-contexts'
+        sh 'kubectl get nodes'
+    }
+}
 
         stage('Deploy Kubernetes') {
             steps {
